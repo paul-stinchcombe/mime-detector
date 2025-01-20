@@ -1,6 +1,6 @@
 {
 	"name": "mime-detector",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A TypeScript module to detect file MIME types",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
