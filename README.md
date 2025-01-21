@@ -19,11 +19,15 @@ npm install mime-detector
 ## Usage
 
 ```typescript
-import { getMimeType, isDocument, isImage, isAudio, isVideo } from 'mime-detector';
+import { getMimeType, getMimeExtension, isDocument, isImage, isAudio, isVideo } from 'mime-detector';
 
 // Get MIME type
 console.log(await getMimeType('https://example.com/document.pdf')); // 'application/pdf'
 console.log(await getMimeType('https://example.com/image.jpg')); // 'image/jpeg'
+
+// Get file extension from MIME type
+console.log(getMimeExtension('image/jpeg')); // '.jpg'
+console.log(getMimeExtension('application/pdf')); // '.pdf'
 
 // Check file type
 console.log(await isDocument('https://example.com/document.pdf')); // true
@@ -34,16 +38,20 @@ console.log(await isVideo('https://example.com/movie.mp4')); // true
 
 ## API
 
-### getMimeType(filePath: string): string
+### getMimeType(filePath: string): Promise<string>
 
 Returns the MIME type for the given file path. First attempts to detect the type by reading the file's magic bytes, then falls back to extension-based detection if necessary.
 
+### getMimeExtension(mimeType: string): string | null
+
+Returns the corresponding file extension (including the dot) for a given MIME type. Returns null if no matching extension is found.
+
 ### Helper Functions
 
--   `isDocument(filePath: string): boolean` - Checks if the file is a document
--   `isImage(filePath: string): boolean` - Checks if the file is an image
--   `isAudio(filePath: string): boolean` - Checks if the file is an audio file
--   `isVideo(filePath: string): boolean` - Checks if the file is a video file
+-   `isDocument(filePath: string): Promise<boolean>` - Checks if the file is a document
+-   `isImage(filePath: string): Promise<boolean>` - Checks if the file is an image
+-   `isAudio(filePath: string): Promise<boolean>` - Checks if the file is an audio file
+-   `isVideo(filePath: string): Promise<boolean>` - Checks if the file is a video file
 
 ## Supported Formats
 
