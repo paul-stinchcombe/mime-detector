@@ -93,6 +93,8 @@ The module first attempts to detect file types by examining their magic bytes (f
 -   JPEG images
 -   PNG images
 -   GIF images
+-   WebP images
+-   SVG images
 -   MP3 audio
 -   MP4 video
 -   WebM video

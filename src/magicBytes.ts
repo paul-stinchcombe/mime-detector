@@ -54,4 +54,28 @@ export const magicBytes: MagicByteDefinition[] = [
 		mimeType: 'video/webm',
 		signatures: [{ bytes: [0x1a, 0x45, 0xdf, 0xa3] }],
 	},
+	// WebP
+	{
+		mimeType: 'image/webp',
+		signatures: [
+			{
+				bytes: [0x52, 0x49, 0x46, 0x46], // RIFF
+				offset: 0,
+			},
+			{
+				bytes: [0x57, 0x45, 0x42, 0x50], // WEBP
+				offset: 8,
+			},
+		],
+	},
+	// SVG
+	{
+		mimeType: 'image/svg+xml',
+		signatures: [
+			// <?xml
+			{ bytes: [0x3c, 0x3f, 0x78, 0x6d, 0x6c] },
+			// <svg
+			{ bytes: [0x3c, 0x73, 0x76, 0x67] },
+		],
+	},
 ];
